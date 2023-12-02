@@ -177,7 +177,21 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     // ----------------------------------------------------------------
-
+    string s; cin >> s;
+    if ((stoi(s.substr(0, 2)) >= 1 && stoi(s.substr(0, 2)) <= 12) && (stoi(s.substr(2, 4)) >= 1 && stoi(s.substr(2, 4)) <= 12)){
+        cout << "AMBIGUOUS" << endl;
+    }
+    else if ((stoi(s.substr(0, 2)) > 12 && stoi(s.substr(2, 4)) <= 12 && stoi(s.substr(2, 4)) >= 1)
+    || (stoi(s.substr(2, 4)) <= 12 && stoi(s.substr(2, 4)) >= 1 && stoi(s.substr(0, 2)) == 0)){
+        cout << "YYMM" << endl;
+    }
+    else if ((stoi(s.substr(2, 4)) > 12 && stoi(s.substr(0, 2)) <= 12 && stoi(s.substr(0, 2)) >= 1)
+    || (stoi(s.substr(0, 2)) <= 12 && stoi(s.substr(0, 2)) >= 1 && stoi(s.substr(2, 4)) == 0)) {
+        cout << "MMYY" << endl;
+    }
+    else {
+        cout << "NA" << endl;
+    }
     // ----------------------------------------------------------------
     return 0;
 }
