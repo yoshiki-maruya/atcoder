@@ -25,6 +25,8 @@ using namespace std;
 
 #define prep(i, n) for (int i = 1; i <= (int)(n); i++)
 
+#define zrep(i, n) for (int i = 0; i <= (int)(n); i++)
+
 #define irep(i, n) for (int i = (int)n - 1; i >= 0; i--)
 
 #define all(v) v.begin(), v.end()
