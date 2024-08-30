@@ -1,4 +1,5 @@
-#pragma GCC optimize("Ofast")
+#ifndef UTIL_H
+#define UTIL_H
 
 #include <bits/stdc++.h>
 
@@ -25,8 +26,6 @@ using namespace std;
 
 #define prep(i, n) for (int i = 1; i <= (int)(n); i++)
 
-#define zrep(i, n) for (int i = 0; i <= (int)(n); i++)
-
 #define irep(i, n) for (int i = (int)n - 1; i >= 0; i--)
 
 #define all(v) v.begin(), v.end()
@@ -52,6 +51,10 @@ bit &= ~mask -> maskで表された部分のフラグをまとめて消す
 bit & mask -> maskで表された部分の情報のみを取り出したもの
 ------------------------------------------------------------------- */
 
+vec pow_vec{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
+
+vecll pow_vecll{1,        10,        100,        1000,        10000,        100000,       1000000,
+                10000000, 100000000, 1000000000, 10000000000, 100000000000, 1000000000000};
 
 void print_vec(vec v) {
     rep(i, (int)v.size()) {
@@ -103,11 +106,14 @@ bool s_contain(string s, char c) {
     }
 }
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    // ----------------------------------------------------------------
-
-    // ----------------------------------------------------------------
-    return 0;
+// 各桁の和を計算する関数
+int findSumOfDigits(int n) {
+  int sum = 0;
+  while (n > 0) { // n が 0 になるまで
+    sum += n % 10;
+    n /= 10;
+  }
+  return sum;
 }
+
+#endif
