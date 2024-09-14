@@ -85,16 +85,6 @@ int alphabet_to_int(char s) {
     return s - 'a';
 }
 
-int mmod(int a, int b) {
-    a += (abs(a / b) + 1) * b;
-    return a % b;
-}
-
-ll mmod(ll a, ll b) {
-    a += (abs(a / b) + 1) * b;
-    return a % b;
-}
-
 bool s_contain(string s, char c) {
     if (s.find(c) != string::npos) {
         return true;
