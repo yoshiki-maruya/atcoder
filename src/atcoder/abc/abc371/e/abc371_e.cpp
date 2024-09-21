@@ -38,10 +38,38 @@ using namespace std;
 #define INF INT_MAX
 #define LINF LLONG_MAX
 
+const int MOD = 1000000007;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     // ----------------------------------------------------------------
+    int n;
+    std::cin >> n;
+
+    std::vector<int> nums(n);
+    std::unordered_map<int, int> count_map;
+
+    // 数列の入力を処理
+    for (int i = 0; i < n; ++i) {
+        std::cin >> nums[i];
+        count_map[nums[i]]++;
+    }
+
+    long long total_sum = 0;
+    long long subset_count = (1LL << n) % MOD; // 部分集合の総数 (MODを使ってオーバーフロー防止)
+
+    // 各種類が何回部分集合に登場するかを計算
+    for (const auto& entry : count_map) {
+        int element = entry.first;
+        int count = entry.second;
+        
+        // この数が登場する部分集合の総数
+        long long subset_with_element = (1LL << (count)) - 1;  // この数を含む部分集合の数
+        total_sum = (total_sum + subset_with_element) % MOD;
+    }
+
+    std::cout << total_sum << std::endl;
 
     // ----------------------------------------------------------------
     return 0;
