@@ -38,60 +38,6 @@ using namespace std;
 #define INF INT_MAX
 #define LINF LLONG_MAX
 
-const int dx[4] = {1, 0, -1, 0};
-const int dy[4] = {0, 1, 0, -1};
-
-/* -------------------------------------------------------------------
-if (bit & (1 << i)) -> i番目のフラグがたっているか
-bit |= (1 << i) -> i番目のフラグをたてる
-bit &= ~(1 << i) -> i番目のフラグを消す
-__builtin_popcount(bit) -> 何個のフラグが立っているか
-
-bit |= mask -> maskで表された部分のフラグをまとめて立てる
-bit &= ~mask -> maskで表された部分のフラグをまとめて消す
-bit & mask -> maskで表された部分の情報のみを取り出したもの
-------------------------------------------------------------------- */
-
-
-void print_vec(vec v) {
-    rep(i, (int)v.size()) {
-        cout << v.at(i);
-    }
-    cout << endl;
-}
-
-void print_vecll(vecll v) {
-    rep(i, (int)v.size()) {
-        cout << v.at(i);
-    }
-    cout << endl;
-}
-
-vec string_to_vec(string s) {
-    vec v(s.size());
-    rep(i, (int)s.size()) {
-        v.at(i) = s.at(i) - '0';
-    }
-    return v;
-}
-
-char int_to_alphabet(int i) {
-    // i = 0 -> a
-    // i = 25 -> z
-    return i + 'a';
-}
-
-int alphabet_to_int(char s) {
-    return s - 'a';
-}
-
-bool s_contain(string s, char c) {
-    if (s.find(c) != string::npos) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 int main() {
     ios_base::sync_with_stdio(false);
