@@ -50,6 +50,17 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     // ----------------------------------------------------------------
+    vector<string> s(12);
+    rep(i, 12) cin >> s[i];
+    int idx = 1;
+    int ans = 0;
+
+    for(auto x : s) {
+        if(x.length() == idx) ans++;
+        idx++;
+    }
+
+    cout << ans << endl;
 
     // ----------------------------------------------------------------
     return 0;

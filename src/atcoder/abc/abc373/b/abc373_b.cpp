@@ -50,6 +50,23 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     // ----------------------------------------------------------------
+    string s;
+    cin >> s;
+    std::vector<int> positions(26);
+    
+    // 各アルファベットの位置を記録
+    for (int i = 0; i < 26; ++i) {
+        positions[s[i] - 'A'] = i;
+    }
+
+    // 'A'から'B', 'B'から'C', ... 'Y'から'Z'までの移動距離を計算
+    int total_distance = 0;
+    for (int i = 0; i < 25; ++i) {
+        total_distance += std::abs(positions[i + 1] - positions[i]);
+    }
+
+    std::cout << total_distance << std::endl;
+
 
     // ----------------------------------------------------------------
     return 0;
