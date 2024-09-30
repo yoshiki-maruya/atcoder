@@ -35,44 +35,54 @@ using namespace std;
   sort(all(v))
 */
 
-#define INF INT_MAX
-#define LINF LLONG_MAX
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     // ----------------------------------------------------------------
     int n, mg, mh;
-    int ans = 0;
     cin >> n;
+    bool g[n][n]={}, h[n][n]={};
+    int a[n][n]={};
+    int ans = 2e9;
+
     cin >> mg;
-    vector<vector<int>> g(n + 1), h(n + 1);
     rep(i, mg) {
         int u, v;
         cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
+        u--;v--;
+        // g[u].push_back(v);
+        // g[v].push_back(u);
+        g[u][v] = g[v][u] = true;
     }
     cin >> mh;
     rep(i, mh) {
         int u, v;
         cin >> u >> v;
-        h[u].push_back(v);
-        h[v].push_back(u);
+        u--;v--;
+        // h[u].push_back(v);
+        // h[v].push_back(u);
+        h[u][v] = h[v][u] = true;
     }
 
-    int a[n][n];
-    for(int i = n - 1; i > 0; i--) {
-        for(int j = 0; j < i; j++) {
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
             cin >> a[i][j];
         }
     }
+    vec order(n);
+    rep(i, n) order[i] = i;
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = i; j <= n; j++) {
-
+    do {
+        int sum = 0;
+        for(int i = 0; i < n; i++) {
+            for(int j = i + 1; j < n; j++) {
+                if(h[i][j] != g[order[i]][order[j]]) sum += a[i][j];
+            }
         }
-    }
+        ans = min(ans, sum);
+    }while(next_permutation(all(order)));
+
+    cout << ans << endl;
 
     // ----------------------------------------------------------------
     return 0;
