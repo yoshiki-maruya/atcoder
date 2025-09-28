@@ -20,8 +20,8 @@ RUN apt update && \
     tree \
     git \
     curl \
-    gcc-9 \
-    g++-9 \
+    gcc-10 \
+    g++-10 \
     gdb \
     python3.9 \
     python3-pip
