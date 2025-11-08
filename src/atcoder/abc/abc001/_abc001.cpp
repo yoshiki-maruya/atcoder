@@ -42,6 +42,37 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     // ----------------------------------------------------------------
+    int n, m, k;
+	int ans = 0;
+    vec a(n);
+	vec b(m);
+	rep(i, n) cin >> a[i];
+	rep(i, m) cin >> b[m];
+	stack<int> sa;
+	stack<int> sb;
+
+	for(int i = n - 1;i >= 0; i--) {
+		sa.push(a[i]);
+	}
+	for(int i = m - 1;i >= 0; i--) {
+		sb.push(b[i]);
+	}
+
+	while(k > 0) {
+		if (sa.top() > sb.top()) {
+			k = k - sb.top();
+			if (k < 0) break;
+			sb.pop();
+			ans++;
+		}
+		else {
+			k = k - sa.top();
+			if (k < 0) break;
+			sa.pop();
+			ans++;
+		}
+	}
+	cout << ans << endl;
 
     // ----------------------------------------------------------------
     return 0;
